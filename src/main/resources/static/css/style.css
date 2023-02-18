@@ -1,0 +1,13 @@
+body{
+    background-color: lightslategray;
+}
+h1{
+    color: rgb(43, 42, 42);
+    margin: 2rem;
+    text-align: center
+}
+p{
+    color: rgb(43, 42, 42);
+    margin: 2rem;
+    text-align: center
+}
