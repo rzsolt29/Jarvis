@@ -22,4 +22,11 @@ public class FormController {
         modelAndView.addObject("today", Instant.now().atZone(ZoneId.systemDefault()).toLocalDate().getDayOfWeek());
         return modelAndView;
     }
+
+    @GetMapping("/user")
+    public ModelAndView user(){
+        logger.debug("request to GET user");
+        ModelAndView modelAndView = new ModelAndView("user");
+        return modelAndView;
+    }
 }
