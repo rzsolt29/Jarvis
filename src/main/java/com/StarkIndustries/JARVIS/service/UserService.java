@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.StarkIndustries.JARVIS.models.User;
 import com.StarkIndustries.JARVIS.models.dto.UserDTO;
+import com.StarkIndustries.JARVIS.mapper.UserMapper;
 
 @Service
 public class UserService {
@@ -30,18 +31,11 @@ public class UserService {
         user1.setPassword("*****");
         userList.add(user2);
         List<UserDTO> toReturn = new ArrayList<UserDTO> ();
-        toReturn.add(convertEntityToDto(userList.get(0)));
-        toReturn.add(convertEntityToDto(userList.get(1)));
+        toReturn.add(UserMapper.map(userList.get(0)));
+        toReturn.add(UserMapper.map(userList.get(1)));
         return toReturn;
     }
 
-    public UserDTO convertEntityToDto (User user){
-        UserDTO userDTO = new UserDTO();
-        userDTO.setEmail(user.getEmail());
-        userDTO.setName(user.getName());
-        userDTO.setRegisteredAt(user.getRegisteredAt());
-        userDTO.setRole(user.getRole());
-        return userDTO;
-    }
+    
 
 }
