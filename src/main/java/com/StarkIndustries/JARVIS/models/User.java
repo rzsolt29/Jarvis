@@ -2,6 +2,7 @@ package com.StarkIndustries.JARVIS.models;
 
 import java.time.Instant;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,11 @@ public class User {
     @Getter
     @Setter
     private Long id;
+    
+    @Column(unique = true)
+    @Getter
+    @Setter
+    private String email;
 
     @Getter
     @Setter
@@ -26,7 +32,11 @@ public class User {
 
     @Getter
     @Setter
-    private boolean isAdmin;
+    private String password;
+
+    @Getter
+    @Setter
+    private Role role;
 
     @Getter
     @Setter
@@ -36,14 +46,14 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        this.isAdmin = false;
+        this.role = Role.USER;
         this.registeredAt =Instant.now();
     }
 
     @Override
     public String toString() {
-        return String.format("User{id=%d, name='%s', isAdmin='%s', registeredAt='%s'}",
-         id, name, isAdmin, registeredAt);
+        return String.format("User{id=%d, email='%s', name='%s', password='%s', role='%s', registeredAt='%s'}",
+         id, email, name, password, role, registeredAt);
     }
 
 }
